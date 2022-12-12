@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.ModelLogin;
 
-@WebServlet("/ServletLogin") /* Mapeamento de URL que vem da tela */
+@WebServlet(urlPatterns = {"/principal/ServletLogin"}) /* Mapeamento de URL que vem da tela */
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,15 +30,34 @@ public class ServletLogin extends HttpServlet {
 
 		String login = request.getParameter("Login");
 		String senha = request.getParameter("Senha");
-
+		String url = request.getParameter("url");	
+		
 		if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 			ModelLogin modelLogin = new ModelLogin();
 			modelLogin.setLogin(login);
 			modelLogin.setSenha(senha);
+				
+			if (modelLogin.getLogin().equalsIgnoreCase("admin")
+					&& modelLogin.getSenha().equalsIgnoreCase("admin")) { /* Simulando login */
 
-		}else {
+				request.getSession().setAttribute("usuario", modelLogin.getLogin());
+				
+				if (url == null || url.equals("null")) {
+					url = "principal/principal.jsp";
+				}
+				
+				RequestDispatcher redirecionar = request.getRequestDispatcher(url);
+				redirecionar.forward(request, response);
+
+			} else {
+				RequestDispatcher redirecionar = request.getRequestDispatcher("/index.jsp");
+				request.setAttribute("msg", "Informe login e senha corretamente");
+				redirecionar.forward(request, response);
+			}
+
+		} else {
 			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("msg", "Informe login e senha corretamente" );
+			request.setAttribute("msg", "Informe login e senha corretamente");
 			redirecionar.forward(request, response);
 		}
 
