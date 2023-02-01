@@ -40,13 +40,14 @@ public class ServletUsuarioController extends HttpServlet {
 		String senha = request.getParameter("senha");
 		
 		ModelLogin modelLogin = new ModelLogin();
+		
 		modelLogin.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
 		modelLogin.setNome(nome);;
 		modelLogin.setEmail(email);
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		
-		daoUsuarioRepository.gravarUsuario(modelLogin);
+		modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
 		
 		request.setAttribute("msg", "Operação realizada com sucesso!");
 		
