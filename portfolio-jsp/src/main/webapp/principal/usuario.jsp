@@ -124,7 +124,26 @@
       </div>
       <div class="modal-body">
         
+        <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Nome" aria-label id="nomeBusca" ="nome" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-success" type="button" onclick="buscarUsuario()">Buscar</button>
+  </div>
+</div>
         
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ver</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
         
       </div>
       <div class="modal-footer">
@@ -137,6 +156,30 @@
     
     <script type="text/javascript">
     
+    function buscarUsuario() {
+    	
+    	var nomeBusca = document.getElementById('nomeBusca').value;
+    	
+    	if (nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != ''){
+    		
+    		var urlAction = document.getElementById('formUser').action;
+    		
+$.ajax({
+    			
+    			method: "get",
+    			url: urlAction,
+    			data: "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
+    			success: function (response) {
+    				
+    			}
+    			
+    		}).fail(function(xhr, status, errorThrown) {
+    			alert('Erro ao buscar usuário por nome: ' + xhr.responseText);
+    		});
+    		
+    	}
+    	
+    }
     
     function criarDeleteComAjax() {
     	
