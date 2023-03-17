@@ -170,7 +170,7 @@ $.ajax({
     			url: urlAction,
     			data: "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
     			success: function (response) {
-    				
+    				alert(response);
     			}
     			
     		}).fail(function(xhr, status, errorThrown) {
