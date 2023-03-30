@@ -54,18 +54,18 @@ public class ServletUsuarioController extends HttpServlet {
 				}
 			
 			else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjax")) {
-					
-					String nomeBusca = request.getParameter("nomeBusca");
-					
-					List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca);
-					
-					ObjectMapper mapper = new ObjectMapper();
-					String json = mapper.writeValueAsString(dadosJsonUser);
-					response.getWriter().write(json);
-					
-					response.getWriter().write("Excluido com sucesso!");
-					
-					}
+				 
+				 String nomeBusca = request.getParameter("nomeBusca");
+				 
+				 List<ModelLogin> dadosJsonUser =  daoUsuarioRepository.consultaUsuarioList(nomeBusca);
+				 
+				 ObjectMapper mapper = new ObjectMapper();
+				 
+				 String json = mapper.writeValueAsString(dadosJsonUser);
+				 
+				 response.getWriter().write(json);
+				 
+			 }
 			
 			else {
 					request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
