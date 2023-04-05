@@ -1,6 +1,6 @@
 # Projeto de Cadastro de Usuário
 
-Este é um projeto de cadastro de usuário que utiliza diversas tecnologias, tais como JSP, Servlet, JDBC, Java, HTML, JavaScript, jQuery, Tomcat, Jasper Report, gráficos, filtros, carregamentos por demanda, paginação de dados, SQL, PostgreSQL, hospedagem no Heroku Cloud, Bootstrap, modal, controle de acesso, login, CRUD completo, relacionamentos de 1 para muitos, e upload e download de arquivos.
+Este é um projeto de cadastro de usuário que utiliza diversas tecnologias, tais como JSP, Servlet, JDBC, Java, HTML, JavaScript, jQuery, Tomcat, Jasper Report, gráficos, filtros, carregamentos por demanda, paginação de dados, SQL, PostgreSQL, Bootstrap, modal, controle de acesso, login, CRUD completo, relacionamentos de 1 para muitos, e upload e download de arquivos.
 
 ## Tecnologias Utilizadas
 
